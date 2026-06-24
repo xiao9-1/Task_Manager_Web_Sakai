@@ -1,0 +1,91 @@
+.tasks-container {
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* GRID под карточки */
+.task-card {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: 0.2s ease;
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+/* HEADER карточки */
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* статус */
+.status {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* разные статусы */
+.status.todo {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.status.in_progress {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.status.done {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* заголовок задачи */
+.task-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* инфо блок */
+.task-info p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+/* кнопки (если у тебя есть в header или tasks) */
+button {
+  padding: 6px 12px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #1976d2;
+  color: white;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #125aa0;
+}

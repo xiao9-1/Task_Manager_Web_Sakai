@@ -1,0 +1,59 @@
+<p-card *ngFor="let task of adminTasks" class="task-card">
+
+  <p-header class="task-header">
+    <span>#{{ task.id }}</span>
+
+    <span class="status" [ngClass]="task.status">
+      {{ task.status }}
+    </span>
+  </p-header>
+
+  <ng-template pTemplate="title">
+    <span class="task-title">
+      {{ task.title }}
+    </span>
+  </ng-template>
+
+  <div class="task-info">
+
+    <p>
+      <b>Due:</b>
+      {{ task.dueTime ? (task.dueTime | date:'dd.MM.yyyy HH:mm') : '—' }}
+    </p>
+
+    <p>
+      <b>Created By:</b>
+      {{ task.createdBy ?? '—' }}
+    </p>
+
+    <p>
+      <b>Created At:</b>
+      {{ task.createdAt ? (task.createdAt | date:'dd.MM.yyyy HH:mm') : '—' }}
+    </p>
+
+    <p>
+      <b>Updated By:</b>
+      {{ task.updatedBy ?? '—' }}
+    </p>
+
+    <p>
+      <b>Updated At:</b>
+      {{ task.updatedAt ? (task.updatedAt | date:'dd.MM.yyyy HH:mm') : '—' }}
+    </p>
+
+    <p>
+      <b>User:</b> {{ task.userId ?? '—' }}
+    </p>
+
+    <p>
+      <b>Rating:</b> {{ task.rating ?? '—' }}
+    </p>
+
+    <p>
+      <b>Project:</b> {{ task.projectId ?? '—' }}
+    </p>
+
+  </div>
+
+</p-card>
+

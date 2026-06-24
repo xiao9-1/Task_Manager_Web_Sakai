@@ -1,0 +1,44 @@
+<p-toolbar class="top-bar">
+
+  <!-- Левая часть: заголовок -->
+  <div class="title">Task Manager</div>
+
+  <!-- Центральная часть: кнопки режимов -->
+  <ng-template pTemplate="center">
+    <div class="center-buttons">
+      <p-button label="User"
+                (click)="setMode(Roles.USER)"
+                [rounded]="true"
+                [text]="true"
+                [severity]="(mode$ | async) === Roles.USER ? 'primary' : 'secondary'">
+      </p-button>
+
+      <p-button *ngIf="(user$ | async)?.role === 'ADMIN'"
+                label="Admin"
+                (click)="setMode(Roles.ADMIN)"
+                [rounded]="true"
+                [text]="true"
+                [severity]="(mode$ | async) === Roles.ADMIN ? 'primary' : 'secondary'">
+      </p-button>
+    </div>
+  </ng-template>
+
+  <!-- Правая часть: информация о пользователе и кнопка выхода -->
+  <ng-template pTemplate="end">
+    <div class="user-section">
+      <div class="user-info" *ngIf="user$ | async as user">
+        <span>Id: {{ user.id }}</span>
+        <span>Name: {{ user.name }}</span>
+        <span>Email: {{ user.email }}</span>
+        <span>Role: {{ user.role }}</span>
+      </div>
+
+      <p-button label="Logout"
+                (click)="onLogout()"
+                severity="danger"
+                [outlined]="true">
+      </p-button>
+    </div>
+  </ng-template>
+
+</p-toolbar>

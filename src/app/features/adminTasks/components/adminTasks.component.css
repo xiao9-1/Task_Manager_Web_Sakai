@@ -1,0 +1,127 @@
+.tasks-container {
+  padding: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 22px;
+  color: #2c3e50;
+  letter-spacing: 0.1px;
+}
+
+/* ===== CARD ===== */
+.task-card {
+  background: #ffffff;
+
+  border: 1px solid #e8e8e8;
+  border-radius: 14px;
+
+  padding: 16px;
+
+  margin-bottom: 14px;
+
+  transition: 0.2s ease;
+
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.task-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+  border-color: #dcdcdc;
+}
+
+/* ===== HEADER ===== */
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 10px;
+
+  font-size: 13px;
+  color: #777;
+}
+
+/* ===== TITLE ===== */
+.task-title {
+  font-size: 18px;
+  font-weight: 600;
+
+  margin-bottom: 8px;
+
+  color: #1f2d3d;
+}
+
+/* ===== STATUS BADGE ===== */
+.status {
+  padding: 5px 10px;
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* status colors */
+.status.todo {
+  background: #e8f0fe;
+  color: #1a73e8;
+}
+
+.status.in_progress {
+  background: #fff4e5;
+  color: #e67e22;
+}
+
+.status.done {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* ===== INFO ===== */
+.task-info p {
+  margin: 4px 0;
+
+  font-size: 14px;
+  color: #444;
+}
+
+/* ===== BUTTONS ===== */
+button {
+  padding: 6px 12px;
+
+  margin-right: 8px;
+
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  background: #1976d2;
+  color: white;
+
+  font-size: 13px;
+
+  transition: 0.15s ease;
+}
+
+button:hover {
+  background: #125aa0;
+}
+
+/* secondary feel (если появятся доп кнопки) */
+button.secondary {
+  background: #f3f4f6;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+button.secondary:hover {
+  background: #e9ecef;
+}

@@ -1,0 +1,113 @@
+<!-- USER TASKS -->
+<div *ngIf="mode === Roles.USER">
+
+  <div *ngFor="let task of userTasks" class="task-card">
+
+    <div class="task-header">
+      <span>#{{ task.id }}</span>
+
+      <span class="status" [ngClass]="task.status">
+        {{ task.status }}
+      </span>
+    </div>
+
+    <div class="task-title">
+      {{ task.title }}
+    </div>
+
+    <div class="task-info">
+
+      <p>
+        <b>Due:</b>
+        {{ task.dueTime ? (task.dueTime | date:'dd.MM.yyyy HH:mm') : '—' }}
+      </p>
+
+      <p>
+        <b>Created:</b>
+        {{ task.createdAt ? (task.createdAt | date:'dd.MM.yyyy HH:mm') : '—' }}
+      </p>
+
+      <p>
+        <b>Completed:</b>
+        {{ task.completedAt ? (task.completedAt | date:'dd.MM.yyyy HH:mm') : '—' }}
+      </p>
+
+      <p>
+        <b>User:</b> {{ task.userId ?? '—' }}
+      </p>
+
+      <p>
+        <b>Rating:</b> {{ task.rating ?? '—' }}
+      </p>
+
+      <p>
+        <b>Project:</b> {{ task.projectId ?? '—' }}
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ADMIN TASKS -->
+<div *ngIf="mode === Roles.ADMIN">
+
+  <div *ngFor="let task of adminTasks" class="task-card">
+
+    <div class="task-header">
+      <span>#{{ task.id }}</span>
+
+      <span class="status" [ngClass]="task.status">
+        {{ task.status }}
+      </span>
+    </div>
+
+    <div class="task-title">
+      {{ task.title }}
+    </div>
+
+    <div class="task-info">
+
+      <p>
+        <b>Due:</b>
+        {{ task.dueTime ? (task.dueTime | date:'dd.MM.yyyy HH:mm') : '—' }}
+      </p>
+
+      <p>
+        <b>Created By:</b>
+        {{ task.createdBy ?? '—' }}
+      </p>
+
+      <p>
+        <b>Created At:</b>
+        {{ task.createdAt ? (task.createdAt | date:'dd.MM.yyyy HH:mm') : '—' }}
+      </p>
+
+      <p>
+        <b>Updated By:</b>
+        {{ task.updatedBy ?? '—' }}
+      </p>
+
+      <p>
+        <b>Updated At:</b>
+        {{ task.updatedAt ? (task.updatedAt | date:'dd.MM.yyyy HH:mm') : '—' }}
+      </p>
+
+      <p>
+        <b>User:</b> {{ task.userId ?? '—' }}
+      </p>
+
+      <p>
+        <b>Rating:</b> {{ task.rating ?? '—' }}
+      </p>
+
+      <p>
+        <b>Project:</b> {{ task.projectId ?? '—' }}
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
