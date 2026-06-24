@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
     styleUrl: 'tasks.component.css'
 })
 export class TasksComponent {
-    mode$!: Observable<Roles>;
+   mode$!: Observable<Roles>;
 
     protected readonly Roles = Roles;
 

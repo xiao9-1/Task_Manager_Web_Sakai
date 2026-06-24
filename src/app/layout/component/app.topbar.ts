@@ -91,10 +91,11 @@ export class AppTopbar {
     ngOnInit() {}
 
     setMode(mode: Roles) {
+
         console.log('Topbar -  Нажатие кнопки смены Mode');
 
         console.log('Текущий mode:', this.modeService.getMode());
-        if (this.modeService.getMode() === mode) {
+        if (this.modeService.getMode() === this.modeService.getMode()) {
             return;
         }
 
