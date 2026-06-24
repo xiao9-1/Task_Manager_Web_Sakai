@@ -1,37 +1,25 @@
-import {Roles} from '../../../enums/roles.enums'
+import {Roles} from '@/app/enums/roles.enums'
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HeaderComponent} from '../../../layout/header/header.component';
-import {AdminTasksComponent} from '../../../features/adminTasks/components/adminTasks.component';
-import {UserTasksComponent} from '../../../features/userTasks/components/userTasks.component';
+import {AdminTasksComponent} from '@/app/features/adminTasks/components/adminTasks.component';
+import {UserTasksComponent} from '@/app/features/userTasks/components/userTasks.component';
 import {ActivatedRoute} from '@angular/router';
+import { ModeService } from '@/app/service/mode.service';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-tasks',
-  standalone: true,
-  imports: [CommonModule, HeaderComponent, AdminTasksComponent, UserTasksComponent],
-  templateUrl: './tasks.component.html',
-  styleUrl: 'tasks.component.css'
+    selector: 'app-tasks',
+    standalone: true,
+    imports: [CommonModule, AdminTasksComponent, UserTasksComponent],
+    templateUrl: './tasks.component.html',
+    styleUrl: 'tasks.component.css'
 })
 export class TasksComponent {
+    mode$!: Observable<Roles>;
 
-  mode: Roles = Roles.USER;
-  Roles = Roles;
+    protected readonly Roles = Roles;
 
-  constructor(private cdr: ChangeDetectorRef,
-              private route: ActivatedRoute) {
-  }
-
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      const mode = params['mode'];
-
-      this.mode = mode === 'admin'
-        ? Roles.ADMIN
-        : Roles.USER;
-
-      console.log('Режим:', this.mode)
-    });
-  }
-
+    constructor(private modeService: ModeService) {
+        this.mode$ = this.modeService.mode$;
+    }
 }

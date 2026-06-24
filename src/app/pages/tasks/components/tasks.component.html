@@ -1,5 +1,7 @@
-<app-header></app-header>
+@if ((mode$ | async) === Roles.ADMIN) {
+    <app-admin-tasks />
+}
 
-<app-admin-tasks *ngIf="mode === Roles.ADMIN"></app-admin-tasks>
-
-<app-user-tasks *ngIf="mode === Roles.USER"></app-user-tasks>
+@if ((mode$ | async) === Roles.USER) {
+    <app-user-tasks />
+}

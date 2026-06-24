@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { RippleModule } from 'primeng/ripple';
 import { AppFloatingConfigurator } from '../../layout/component/app.floatingconfigurator';
+import { AuthService } from '@/app/service/auth.service';
+import { Roles } from '@/app/enums/roles.enums';
+import { ModeService } from '@/app/service/mode.service';
 
 @Component({
     selector: 'app-login',
@@ -36,7 +39,7 @@ import { AppFloatingConfigurator } from '../../layout/component/app.floatingconf
                                     />
                                 </g>
                             </svg>
-                            <div class="text-surface-900 dark:text-surface-0 text-3xl font-medium mb-4">Welcome to PrimeLand!</div>
+                            <div class="text-surface-900 dark:text-surface-0 text-3xl font-medium mb-4">Welcome to Task Manager!</div>
                             <span class="text-muted-color font-medium">Sign in to continue</span>
                         </div>
 
@@ -52,9 +55,9 @@ import { AppFloatingConfigurator } from '../../layout/component/app.floatingconf
                                     <p-checkbox [(ngModel)]="checked" id="rememberme1" binary class="mr-2"></p-checkbox>
                                     <label for="rememberme1">Remember me</label>
                                 </div>
-                                <span class="font-medium no-underline ml-2 text-right cursor-pointer text-primary">Forgot password?</span>
+                                <span class="font-medium no-underline ml-2 text-right cursor-pointer text-primary">Forgot password?(Not avaliable)</span>
                             </div>
-                            <p-button label="Sign In" styleClass="w-full" routerLink="/"></p-button>
+                            <p-button label="Sign In" styleClass="w-full" (click)="login()"></p-button>
                         </div>
                     </div>
                 </div>
@@ -67,5 +70,48 @@ export class Login {
 
     password: string = '';
 
+    errorMessage = '';
+
     checked: boolean = false;
+
+    constructor(
+        private authService: AuthService,
+        private router: Router,
+        private modeService: ModeService
+    ) {}
+
+    ngOnInit() {
+        this.authService.getMe().subscribe({
+            next: () => {
+                console.log('Пользователь уже авторизован! Возрат к /tasks');
+                this.router.navigate(['/tasks']);
+            },
+            error: () => {
+                console.log('Пользователь не авторизован!');
+                // остаёмся на login
+            }
+        });
+    }
+
+    login() {
+        console.log('Попытка авторизации пользователя с email:', this.email);
+        this.authService.login(this.email, this.password).subscribe({
+            next: () => {
+                console.log('Успешный вход в систему:', this.email);
+                this.loadUser();
+            },
+            error: () => {
+                console.log('Ошибка авторизации');
+                this.errorMessage = 'Ошибка авторизации';
+            }
+        });
+    }
+
+    private loadUser() {
+        console.log('loadUser() - загрузка пользователя');
+        this.authService.getMe().subscribe((user) => {
+            this.authService.setUser(user);
+            this.router.navigate(['/tasks']);
+        });
+    }
 }

@@ -46,13 +46,6 @@ import { filter } from 'rxjs/operators';
                 }
             </a>
         }
-        @if (hasChildren() && isVisible() && (root() || isActive())) {
-            <ul [animate.enter]="initialized() ? 'p-submenu-enter' : null" [animate.leave]="'p-submenu-leave'" [class.layout-root-submenulist]="root()">
-                @for (child of item().items; track child?.label) {
-                    <li app-menuitem [item]="child" [parentPath]="fullPath()" [root]="false" [class]="child['badgeClass']"></li>
-                }
-            </ul>
-        }
     `,
     host: {
         '[class.active-menuitem]': 'isActive()',

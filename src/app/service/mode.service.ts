@@ -12,11 +12,12 @@ export class ModeService {
   mode$ = this.modeSubject.asObservable();
 
   setMode(mode: Roles): void {
-    console.log('HEADER setMode:', mode);
     this.modeSubject.next(mode);
+    console.log('ModeService - установлен mode: ', mode);
   }
 
   getMode(): Roles {
+    console.log('ModeService - получен mode:', this.modeSubject.value);
     return this.modeSubject.value;
   }
 }
