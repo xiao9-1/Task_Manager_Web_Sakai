@@ -1,0 +1,6 @@
+{
+  "name": "angular-dev",
+  "image": "node:22",
+  "forwardPorts": [4200],
+  "postCreateCommand": "npm install"
+}
